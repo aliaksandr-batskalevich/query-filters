@@ -19,7 +19,7 @@ const createFilterState = (filterKeys: FilterKeys[], searchParams: URLSearchPara
 
 const createFilterEntries = (searchParams: URLSearchParams): string[][] =>
     Array.from(searchParams.entries())
-        .filter(f => filterKeys.includes(f[0] as FilterKeys));
+        .filter(f => (filterKeys as string[]).includes(f[0]));
 
 const compareFilterState = (prevFilterState: FilterState, nextFilterState: FilterState): boolean => {
     const prevFilterKeys = Object.keys(prevFilterState) as FilterKeys[];

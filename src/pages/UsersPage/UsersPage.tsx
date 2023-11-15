@@ -22,7 +22,7 @@ export const UsersPage = () => {
 
     const openProfileHandler = useCallback((userId: number) => {
         openPopUp(PopUpType.PROFILE, String(userId));
-    }, [openPopUp]);
+    }, []);
 
     return (
         <div className={s.usersPageWrapper}>
