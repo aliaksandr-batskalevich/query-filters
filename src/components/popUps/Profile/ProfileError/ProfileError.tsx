@@ -1,4 +1,5 @@
 import React from 'react';
+import profileStyle from '../Profile.module.scss';
 import s from './ProfileError.module.scss';
 
 interface ProfileErrorProps {
@@ -7,7 +8,7 @@ interface ProfileErrorProps {
 
 export const ProfileError: React.FC<ProfileErrorProps> = ({error}) => {
     return (
-        <div className={s.profileWrapper}>
+        <div className={profileStyle.profileWrapper}>
             <p className={s.error}>{error}</p>
         </div>
     );

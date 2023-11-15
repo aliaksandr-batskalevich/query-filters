@@ -8,6 +8,8 @@ import {PopUp} from "./components/PopUp/PopUp";
 
 function App() {
 
+    console.log('APP')
+
     return (
         <div className={s.appWrapper}>
             <Header/>

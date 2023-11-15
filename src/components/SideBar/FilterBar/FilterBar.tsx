@@ -15,13 +15,19 @@ export const FilterBar = () => {
 
     const {filterActions, filterState} = useQueryFilter(['/users']);
 
-    const filterSelectorsToRender = filters.map(filter =>
-        <FilterSelector
+    const filterSelectorsToRender = filters.map(filter => {
+
+        const addFilterHandler = (value: string) => {
+            filterActions[filter.filterKey].addItem(value);
+        };
+
+        return <FilterSelector
             key={filter.filterKey}
             activeValues={filterState?.[filter.filterKey] || []}
-            addFilter={(value) => filterActions[filter.filterKey].addItem(value)}
+            addFilter={addFilterHandler}
             {...filter}
-        />);
+        />;
+    });
 
     return (
         <div className={s.filterBarWrapper}>
