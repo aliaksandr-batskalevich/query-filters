@@ -1,0 +1,19 @@
+.usersListWrapper {
+  margin-top: 10px;
+  position: relative;
+  flex-grow: 1;
+}
+
+.preloader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(217, 221, 236, 0.7);
+}

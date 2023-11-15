@@ -1,0 +1,36 @@
+.userItem {
+  padding: 5px;
+  border: black solid 1px;
+  cursor: pointer;
+
+  display: flex;
+  gap: 5px;
+
+  &:not(:first-child) {
+    margin-top: 5px;
+  }
+
+  .avatarWrapper {
+
+    img {
+      height: 50px;
+    }
+  }
+
+  .descriptionWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .statusWrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Caveat', cursive;
+    font-size: 25px;
+  }
+
+}

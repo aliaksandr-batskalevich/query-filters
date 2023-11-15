@@ -1,0 +1,11 @@
+.filterBarWrapper {
+  h2 {
+    text-decoration: underline;
+  }
+
+  .selectorsWrapper {
+    > div:not(:first-child) {
+      margin-top: 5px;
+    }
+  }
+}

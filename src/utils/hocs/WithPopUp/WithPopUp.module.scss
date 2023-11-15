@@ -1,0 +1,38 @@
+.disabledField {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9000;
+
+  .popUp {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.75);
+    z-index: 9001;
+
+    .closeButton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+
+      &::before {
+        content: '✖';
+        font-size: 20px;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

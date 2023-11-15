@@ -1,0 +1,6 @@
+@import "/src/difinitions";
+
+.mainWrapper {
+  grid-area: main;
+  background-color: $color-elements-background;
+}

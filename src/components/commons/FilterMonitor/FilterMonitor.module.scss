@@ -1,0 +1,52 @@
+.filterMonitor {
+  padding: 3px;
+  border: black solid 1px;
+  border-radius: 3px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  .filterLabel {
+    line-height: 1;
+
+    &::before {
+      content: '🛠';
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .clearAllButton {
+    border: none;
+    background-color: transparent;
+    line-height: 1;
+    cursor: pointer;
+    position: relative;
+
+    &::before {
+      content: '🗑';
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:hover::after{
+      content: attr(data-title);
+      font-size: 12px;
+      font-weight: normal;
+      display: inline-block;
+      padding: 2px;
+      border: black solid 1px;
+      background-color: white;
+      position: absolute;
+      top: 100%;
+      left: 100%;
+    }
+  }
+
+
+}

@@ -1,0 +1,10 @@
+.navigationWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .logo {
+    display: inline-block;
+    width: 30px;
+  }
+}

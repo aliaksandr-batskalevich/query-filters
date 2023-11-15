@@ -1,0 +1,30 @@
+@import "/src/difinitions";
+
+.filterElementWrapper {
+  padding: 2px 12px 2px 2px;
+  border: black solid 1px;
+  border-radius: 2px;
+  background-color: $color-elements-background-dark;
+  position: relative;
+
+  .closeButton {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    line-height: 12px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    opacity: .5;
+
+    &::after {
+      content: '✖';
+      font-size: 12px;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+  }
+}

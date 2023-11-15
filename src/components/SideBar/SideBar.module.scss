@@ -1,0 +1,11 @@
+@import "/src/difinitions";
+
+.SideBarWrapper {
+  padding: 5px;
+  grid-area: sidebar;
+  background-color: $color-elements-background;
+
+  > div {
+    margin-top: 20px;
+  }
+}

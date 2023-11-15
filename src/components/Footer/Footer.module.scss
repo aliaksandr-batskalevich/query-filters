@@ -1,0 +1,17 @@
+@import "/src/difinitions";
+
+.footerWrapper {
+  grid-area: footer;
+  background-color: $color-elements-background;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .copyRight {
+    &::before {
+      margin-right: 5px;
+      content: '©';
+    }
+  }
+}
