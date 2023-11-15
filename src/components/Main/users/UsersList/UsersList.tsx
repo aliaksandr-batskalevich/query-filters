@@ -11,7 +11,7 @@ interface UsersListProps {
 
 export const UsersList = React.memo(({openProfile}: UsersListProps) => {
 
-    console.log('users rendered!');
+    // console.log('users rendered!');
 
     const users = useSelector(getUsers);
     const isUsersFetching = useSelector(getIsUsersFetching);

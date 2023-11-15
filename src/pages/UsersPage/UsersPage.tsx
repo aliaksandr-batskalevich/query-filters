@@ -10,7 +10,7 @@ import {fetchUsers} from "../../store/asyncActions/users.action";
 
 export const UsersPage = () => {
 
-    console.log('render');
+    // console.log('render');
 
     const dispatch = useAppDispatch();
     const {filterState} = useQueryFilter(['/users']);
