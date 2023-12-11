@@ -1,6 +1,6 @@
 import {AllUsersResponse, UserResponse} from "../models/response/users.response";
 import {instance} from "./http.instance";
-import {FilterKeys} from "../models/queryKeys/FilterKeys";
+import {FilterKeys} from "../queryFilters/models/FilterKeys";
 
 export class HttpApi {
     static getUsers(params?: Record<FilterKeys, string[]>): Promise<AllUsersResponse> {

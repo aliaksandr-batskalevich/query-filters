@@ -1,5 +1,5 @@
 import {SessionStorageKeys} from "../models/SessionStorageKeys";
-import {filterKeys, FilterKeys} from "../models/queryKeys/FilterKeys";
+import {filterKeys, FilterKeys} from "../queryFilters/models/FilterKeys";
 
 class FilterStorageApi {
 

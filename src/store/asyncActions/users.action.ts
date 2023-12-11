@@ -1,6 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {HttpApi} from "../../dal/http.api";
-import {FilterKeys} from "../../models/queryKeys/FilterKeys";
+import {FilterKeys} from "../../queryFilters/models/FilterKeys";
 import {errorProcessing} from "../../utils/errorProcessing/errorProcessing";
 
 export const fetchUsers = createAsyncThunk(

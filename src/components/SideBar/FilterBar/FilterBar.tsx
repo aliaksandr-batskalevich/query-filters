@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './FilterBar.module.scss';
-import {useQueryFilter} from "../../../utils/hooks/useQueryFilter";
 import {IFilterSelector} from "../../../models/IFilterSelector";
-import {FilterKeys} from "../../../models/queryKeys/FilterKeys";
+import {FilterKeys} from "../../../queryFilters/models/FilterKeys";
 import {FilterSelector} from "./FilterSelector/FilterSelector";
+import {useQueryFilter} from "../../../queryFilters/useQueryFilter.consumer";
 
 const filters: IFilterSelector[] = [
     {title: 'Tags', filterKey: FilterKeys.TAG, values: ['summer', 'hot', 'holiday', 'friends']},
@@ -13,7 +13,7 @@ const filters: IFilterSelector[] = [
 
 export const FilterBar = () => {
 
-    const {filterActions, filterState} = useQueryFilter(['/users']);
+    const {filterActions, filterState} = useQueryFilter();
 
     const filterSelectorsToRender = filters.map(filter => {
 

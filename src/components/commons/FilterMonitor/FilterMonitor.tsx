@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './FilterMonitor.module.scss';
-import {useQueryFilter} from "../../../utils/hooks/useQueryFilter";
-import {FilterKeys} from "../../../models/queryKeys/FilterKeys";
+import {FilterKeys} from "../../../queryFilters/models/FilterKeys";
 import {FilterElement} from "./FilterElement/FilterElement";
+import {useQueryFilter} from "../../../queryFilters/useQueryFilter.consumer";
 
 interface FilterMonitorProps {
     pages: string[];
@@ -10,7 +10,7 @@ interface FilterMonitorProps {
 
 export const FilterMonitor: React.FC<FilterMonitorProps> = ({pages}) => {
 
-    const {filterEntries, filterActions, clearFilter} = useQueryFilter(pages);
+    const {filterEntries, filterActions, clearFilter} = useQueryFilter();
 
     const removeFilterHandler = (title: string, value: string) => {
         filterActions[title as FilterKeys].removeItem(value);

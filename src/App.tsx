@@ -5,6 +5,7 @@ import {SideBar} from "./components/SideBar/SideBar";
 import {Header} from "./components/Header/Header";
 import {Footer} from "./components/Footer/Footer";
 import {PopUp} from "./components/PopUp/PopUp";
+import {FilterProvider} from "./queryFilters/FilterProvider";
 
 function App() {
 
@@ -12,11 +13,13 @@ function App() {
 
     return (
         <div className={s.appWrapper}>
-            <Header/>
-            <Main/>
-            <SideBar/>
-            <PopUp/>
-            <Footer/>
+            <FilterProvider>
+                <Header/>
+                <Main/>
+                <SideBar/>
+                <PopUp/>
+                <Footer/>
+            </FilterProvider>
         </div>
     );
 }
