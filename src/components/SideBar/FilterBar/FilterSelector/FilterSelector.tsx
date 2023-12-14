@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './FilterSelector.module.scss';
-import {IFilterSelector} from "../../../../models/IFilterSelector";
+import {IFilterSelector} from "../../../../queryFilters/models/IFilterSelector";
 import {FilterOption} from "./FilterOption/FilterOption";
 
 interface FilterSelectorProps extends IFilterSelector {

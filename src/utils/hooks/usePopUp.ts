@@ -11,7 +11,7 @@ export const usePopUp = () => {
         searchParams.set(PopUpKeys.POP_UP, popUpType);
         popUpPayload && searchParams.set(PopUpKeys.PAYLOAD, popUpPayload);
         setSearchParams(searchParams);
-    }, []);
+    }, [searchParams]);
 
     const closePopUp = useCallback(() => {
         const searchParams = new URLSearchParams(window.location.search);
@@ -23,7 +23,7 @@ export const usePopUp = () => {
         });
 
         setSearchParams(searchParams);
-    }, []);
+    }, [searchParams]);
 
 
     return {searchParams, openPopUp, closePopUp};

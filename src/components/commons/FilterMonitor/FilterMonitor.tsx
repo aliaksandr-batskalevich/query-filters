@@ -4,11 +4,7 @@ import {FilterKeys} from "../../../queryFilters/models/FilterKeys";
 import {FilterElement} from "./FilterElement/FilterElement";
 import {useQueryFilter} from "../../../queryFilters/useQueryFilter.consumer";
 
-interface FilterMonitorProps {
-    pages: string[];
-}
-
-export const FilterMonitor: React.FC<FilterMonitorProps> = ({pages}) => {
+export const FilterMonitor = () => {
 
     const {filterEntries, filterActions, clearFilter} = useQueryFilter();
 
@@ -16,7 +12,7 @@ export const FilterMonitor: React.FC<FilterMonitorProps> = ({pages}) => {
         filterActions[title as FilterKeys].removeItem(value);
     };
 
-    const filtersToRender = filterEntries.map(f =>
+    const filtersToRender = filterEntries?.map(f =>
         <FilterElement
             key={Math.random()}
             filterKey={f[0]}
@@ -27,7 +23,7 @@ export const FilterMonitor: React.FC<FilterMonitorProps> = ({pages}) => {
     return (
         <div className={s.filterMonitor}>
             <div className={s.filterLabel}/>
-            {filtersToRender.length
+            {filtersToRender?.length
                 ? <>
                     {filtersToRender}
                     <button

@@ -1,6 +1,5 @@
 import React, {ReactNode} from "react";
 import {QueryFilterContext, useFilterValueContext} from "./queryFilterContext";
-import {QueryCacheContext, useQueryCacheContext} from "./queryCacheContext";
 
 
 interface IFilterProvider {
@@ -10,13 +9,10 @@ interface IFilterProvider {
 export const FilterProvider = ({children}: IFilterProvider) => {
 
     const queryContextValue = useFilterValueContext();
-    const queryCacheContextValue = useQueryCacheContext();
 
     return (
         <QueryFilterContext.Provider value={queryContextValue}>
-            <QueryCacheContext.Provider value={queryCacheContextValue}>
-                {children}
-            </QueryCacheContext.Provider>
+            {children}
         </QueryFilterContext.Provider>
     );
 };

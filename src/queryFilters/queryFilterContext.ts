@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {useLocation, useSearchParams} from "react-router-dom";
-import {FilterState} from "../models/FilterState";
-import {compareFilterState, createFilterState} from "./utils/filterState.utils";
+import {FilterPart, FilterState} from "./models/FilterState";
+import {compareFilterPart, createFilterPart, createFilterState, updateFilterState} from "./utils/filterState.utils";
 import {FilterKeys, filterKeys} from "./models/FilterKeys";
-import {createFilterEntries} from "./utils/searchParams.utils";
+import {createFilterEntriesState, updateFilterEntriesState} from "./utils/filterEntries.utils";
 import {FilterAction} from "./models/FilterAction";
 import {IFilterContext} from "./models/IFilterContext";
+import {FilterEntriesState} from "./models/FilterEntriesState";
 
 
 // CREATE CONTEXT
@@ -14,22 +15,27 @@ export const QueryFilterContext = React.createContext<null | IFilterContext>(nul
 // CONTEXT VALUE
 export const useFilterValueContext = (): IFilterContext => {
 
-    const location = useLocation();
+    const {pathname} = useLocation();
     let [searchParams, setSearchParams] = useSearchParams();
-    const [filterState, setFilterState] = useState<FilterState>(createFilterState(filterKeys, searchParams));
-    const [filterEntries, setFilterEntries] = useState<string[][]>(createFilterEntries(searchParams));
+    const [filterState, setFilterState] = useState<FilterState>(
+        createFilterState(pathname, searchParams)
+    );
+    const [filterEntriesState, setFilterEntriesState] = useState<FilterEntriesState>(
+        createFilterEntriesState(pathname, searchParams)
+    );
 
     useEffect(() => {
-        const nextFilterState = createFilterState(filterKeys, searchParams);
 
-        if (filterState && !compareFilterState(filterState, nextFilterState)) {
-            console.log(filterState, nextFilterState)
-            console.log('change filter state!')
-            setFilterState(nextFilterState);
-            setFilterEntries(createFilterEntries(searchParams));
+        const nextFilterPart = createFilterPart(searchParams);
+
+        if (!compareFilterPart(filterState[pathname] || {} as FilterPart, nextFilterPart)) {
+
+            setFilterState(updateFilterState(pathname, filterState, nextFilterPart));
+            setFilterEntriesState(updateFilterEntriesState(pathname, filterEntriesState, searchParams));
+
         }
 
-    }, [searchParams, setFilterState, filterState]);
+    }, [pathname, searchParams, setFilterState, filterState]);
 
     const filterActions = {} as Record<FilterKeys, FilterAction>;
     filterKeys.forEach(fk => {
@@ -43,7 +49,17 @@ export const useFilterValueContext = (): IFilterContext => {
         setSearchParams(searchParams);
     };
 
-    return {filterEntries, filterState, filterActions, clearFilter};
+    const addQueryToPath = (path: string): string => filterEntriesState[path]
+        ? path + '?' + new URLSearchParams(filterEntriesState[path]).toString()
+        : path;
+
+    return {
+        filterPart: filterState[pathname],
+        filterEntries: filterEntriesState[pathname],
+        filterActions,
+        clearFilter,
+        addQueryToPath,
+    };
 };
 
 

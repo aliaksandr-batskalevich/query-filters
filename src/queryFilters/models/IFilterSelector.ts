@@ -1,4 +1,4 @@
-import {FilterKeys} from "../queryFilters/models/FilterKeys";
+import {FilterKeys} from "./FilterKeys";
 
 export interface IFilterSelector {
     title: string;
