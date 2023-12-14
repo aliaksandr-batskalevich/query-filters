@@ -9,7 +9,7 @@ interface IFilterProvider {
 
 export const FilterProvider = ({children}: IFilterProvider) => {
 
-    const queryContextValue = useFilterValueContext(['/users']);
+    const queryContextValue = useFilterValueContext();
     const queryCacheContextValue = useQueryCacheContext();
 
     return (

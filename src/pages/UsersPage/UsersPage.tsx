@@ -7,15 +7,21 @@ import {usePopUp} from "../../utils/hooks/usePopUp";
 import {useAppDispatch} from "../../utils/hooks/useAppDispatch";
 import {fetchUsers} from "../../store/asyncActions/users.action";
 import {useQueryFilter} from "../../queryFilters/useQueryFilter.consumer";
+import {useUpdateQueryCache} from "../../queryFilters/useUpdateQueryCache";
 
 export const UsersPage = () => {
 
+    console.log('USERS');
+
     const dispatch = useAppDispatch();
-    const {filterState} = useQueryFilter();
     const {openPopUp} = usePopUp();
 
+    const {filterState} = useQueryFilter();
+    useUpdateQueryCache();
+
     useEffect(() => {
-        filterState && dispatch(fetchUsers(filterState));
+        dispatch(fetchUsers(filterState));
+        console.log('FETCH!')
     }, [filterState]);
 
     const openProfileHandler = useCallback((userId: number) => {

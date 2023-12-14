@@ -12,9 +12,10 @@ export const useQueryCacheContext = (): IQueryCacheContext => {
     const [queryCache, setQueryCache] = useState<Record<string, string>>({});
 
     const applyQueryCache = useCallback(
-        (page: string) => queryCache[page]
-            ? page + queryCache[page]
-            : page,
+        (page: string): string =>
+            queryCache[page]
+                ? page + queryCache[page]
+                : page,
         [queryCache]);
 
     const updateQueryCache = useCallback((page: string, query: string) => {
