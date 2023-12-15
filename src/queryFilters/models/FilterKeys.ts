@@ -11,17 +11,15 @@ export enum FilterKeys {
     LIST = 'list',
     TAG = 'tag',
     NAME = 'name',
-    PAGE = 'page',
-    STRICT = 'strict',
+    FAKE = 'fake',
 }
 
 export const filterTypes = {
     [FilterKeys.CATEGORY]: FilterKeyTypes.MULTIPLE_STR,
     [FilterKeys.LIST]: FilterKeyTypes.SINGLE_STR,
     [FilterKeys.TAG]: FilterKeyTypes.MULTIPLE_STR,
-    [FilterKeys.NAME]: FilterKeyTypes.SINGLE_STR,
-    [FilterKeys.PAGE]: FilterKeyTypes.SINGLE_NUM,
-    [FilterKeys.STRICT]: FilterKeyTypes.BOOLEAN,
+    [FilterKeys.NAME]: FilterKeyTypes.MULTIPLE_STR,
+    [FilterKeys.FAKE]: FilterKeyTypes.SINGLE_STR,
 } as Record<FilterKeys, FilterKeyTypes>;
 
 

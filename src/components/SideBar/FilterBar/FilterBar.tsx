@@ -10,11 +10,12 @@ const filters: IFilterSelector[] = [
     {title: 'Category', filterKey: FilterKeys.CATEGORY, values: ['home', 'work', 'car']},
     {title: 'List', filterKey: FilterKeys.LIST, values: ['myWorkspace', 'SecretList']},
     {title: 'Name', filterKey: FilterKeys.NAME, values: ['Alex', 'Marry']},
+    {title: 'Fake', filterKey: FilterKeys.FAKE, values: ['Fake1', 'Fake2']},
 ];
 
 export const FilterBar = () => {
 
-    const {filterActions, filterPart} = useQueryFilter();
+    const {filterActions, filterEntries} = useQueryFilter();
 
     const filterSelectorsToRender = filters.map(filter => {
 
@@ -22,9 +23,16 @@ export const FilterBar = () => {
             filterActions[filter.filterKey].addItem(value);
         };
 
+        const activeValues = filterEntries?.reduce(
+            (acc, el) =>
+                el[0] === filter.filterKey
+                    ? [...acc, el[1]]
+                    : acc,
+            []) || [];
+
         return <FilterSelector
             key={filter.filterKey}
-            activeValues={filterPart?.[filter.filterKey] || []}
+            activeValues={activeValues}
             addFilter={addFilterHandler}
             {...filter}
         />;

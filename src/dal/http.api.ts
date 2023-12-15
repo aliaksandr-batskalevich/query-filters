@@ -1,9 +1,10 @@
 import {AllUsersResponse, UserResponse} from "../models/response/users.response";
 import {instance} from "./http.instance";
 import {FilterKeys} from "../queryFilters/models/FilterKeys";
+import {FilterPart} from "../queryFilters/models/FilterState";
 
 export class HttpApi {
-    static getUsers(params?: Record<FilterKeys, string[]>): Promise<AllUsersResponse> {
+    static getUsers(params?: FilterPart): Promise<AllUsersResponse> {
         return instance.get<AllUsersResponse>(`users`, {params}).then(response => response.data);
     }
 

@@ -17,25 +17,21 @@ export class FilterAction {
 
     addItem(value: string) {
 
-        if (
-            filterTypes[this.filterKey] === FilterKeyTypes.SINGLE_STR
-            || filterTypes[this.filterKey] === FilterKeyTypes.SINGLE_NUM
-            || filterTypes[this.filterKey] === FilterKeyTypes.BOOLEAN
-        ) {
-            this.searchParams.delete(this.filterKey);
-            this.searchParams.append(this.filterKey, value);
-            this.setSearchParams(this.searchParams);
-        }
-
-        if (
-            filterTypes[this.filterKey] === FilterKeyTypes.MULTIPLE_STR
-            || filterTypes[this.filterKey] === FilterKeyTypes.MULTIPLE_NUM
-        ) {
-            const values = this.searchParams.getAll(this.filterKey);
-            if (values.includes(value)) return;
-
-            this.searchParams.append(this.filterKey, value);
-            this.setSearchParams(this.searchParams);
+        switch (filterTypes[this.filterKey]) {
+            case FilterKeyTypes.SINGLE_STR:
+            case FilterKeyTypes.SINGLE_NUM:
+            case FilterKeyTypes.BOOLEAN:
+                this.searchParams.delete(this.filterKey);
+                this.searchParams.append(this.filterKey, value);
+                this.setSearchParams(this.searchParams);
+                break;
+            case FilterKeyTypes.MULTIPLE_STR:
+            case FilterKeyTypes.MULTIPLE_NUM:
+                const values = this.searchParams.getAll(this.filterKey);
+                if (values.includes(value)) return;
+                this.searchParams.append(this.filterKey, value);
+                this.setSearchParams(this.searchParams);
+                break;
         }
 
     }
