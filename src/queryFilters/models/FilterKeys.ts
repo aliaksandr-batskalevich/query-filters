@@ -22,7 +22,7 @@ export const filterTypes = {
     [FilterKeys.NAME]: FilterKeyTypes.SINGLE_STR,
     [FilterKeys.PAGE]: FilterKeyTypes.SINGLE_NUM,
     [FilterKeys.STRICT]: FilterKeyTypes.BOOLEAN,
-} as const;
+} as Record<FilterKeys, FilterKeyTypes>;
 
 
 export const filterKeys = Object.values(FilterKeys) as FilterKeys[];

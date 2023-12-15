@@ -1,7 +1,7 @@
-import {FilterKeys} from "./FilterKeys";
+import {FilterKeys, FilterKeyTypes, filterTypes} from "./FilterKeys";
 
 export class FilterAction {
-    filterKey: string;
+    filterKey: FilterKeys;
     searchParams: URLSearchParams;
     setSearchParams: (searchParams: URLSearchParams) => void;
 
@@ -16,11 +16,28 @@ export class FilterAction {
     }
 
     addItem(value: string) {
-        const values = this.searchParams.getAll(this.filterKey);
-        if (values.includes(value)) return;
 
-        this.searchParams.append(this.filterKey, value);
-        this.setSearchParams(this.searchParams);
+        if (
+            filterTypes[this.filterKey] === FilterKeyTypes.SINGLE_STR
+            || filterTypes[this.filterKey] === FilterKeyTypes.SINGLE_NUM
+            || filterTypes[this.filterKey] === FilterKeyTypes.BOOLEAN
+        ) {
+            this.searchParams.delete(this.filterKey);
+            this.searchParams.append(this.filterKey, value);
+            this.setSearchParams(this.searchParams);
+        }
+
+        if (
+            filterTypes[this.filterKey] === FilterKeyTypes.MULTIPLE_STR
+            || filterTypes[this.filterKey] === FilterKeyTypes.MULTIPLE_NUM
+        ) {
+            const values = this.searchParams.getAll(this.filterKey);
+            if (values.includes(value)) return;
+
+            this.searchParams.append(this.filterKey, value);
+            this.setSearchParams(this.searchParams);
+        }
+
     }
 
     removeItem(value: string) {

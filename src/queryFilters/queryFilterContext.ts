@@ -17,12 +17,8 @@ export const useFilterValueContext = (): IFilterContext => {
 
     const {pathname} = useLocation();
     let [searchParams, setSearchParams] = useSearchParams();
-    const [filterState, setFilterState] = useState<FilterState>(
-        createFilterState(pathname, searchParams)
-    );
-    const [filterEntriesState, setFilterEntriesState] = useState<FilterEntriesState>(
-        createFilterEntriesState(pathname, searchParams)
-    );
+    const [filterState, setFilterState] = useState<FilterState>(createFilterState(pathname, searchParams));
+    const [filterEntriesState, setFilterEntriesState] = useState<FilterEntriesState>(createFilterEntriesState(pathname, searchParams));
 
     useEffect(() => {
 
